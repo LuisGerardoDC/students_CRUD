@@ -11,9 +11,18 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+##additional libraries
 import os
 from dotenv import load_dotenv
+from mongoengine import connect
+
+#load dot env
 load_dotenv()
+
+
+#conect to DB
+host = f"mongodb+srv://{os.getenv('USERNAME')}:{os.getenv('PASSWORD')}@cluster0.jw8l1.mongodb.net/{os.getenv('DATABASE_NAME')}?retryWrites=true&w=majority"
+connect(host=host)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,12 +90,12 @@ WSGI_APPLICATION = 'students_dashboard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'djongo',
+#        'NAME': 'school',
+#    }
+#}
 
 
 # Password validation
