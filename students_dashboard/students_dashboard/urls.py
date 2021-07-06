@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from users import views as users_views
+from students import views as students_views
+from courses import views as courses_views
 
 urlpatterns = [
     path('', users_views.login),
-    path('sign_up/',users_views.sign_up)
+    path('sign_up/',users_views.sign_up),
+    path('students/',students_views.students),
+    path('evalua/',courses_views.eval),
 ]
